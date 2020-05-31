@@ -23,6 +23,6 @@ puts "Title: #{self.title}\n"
 puts "Rated: #{self.rated}\n"
 puts "Synopsis: #{self.synopsis}\n"
 puts "URL: #{self.url}\n"
-puts "Score: #{self.score}\n"
+puts "Score: #{self.score}\n\n\n"
 end
 end

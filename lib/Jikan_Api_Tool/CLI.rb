@@ -15,11 +15,11 @@ class Cli
             when "anime"
             puts  'Anime selected, please input the name you want to search.'
             anime_pull
-
             #run api method at this point and return info
             when "manga"
             puts 'Manga selected, please input the name you want to search. '
             manga_pull
+            #run api method at this point and return info
             when "exit"
                 closer
             else
