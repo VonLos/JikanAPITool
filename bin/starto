@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/Jikan_Api_Tool/enviro.rb'
+Cli.new.starter

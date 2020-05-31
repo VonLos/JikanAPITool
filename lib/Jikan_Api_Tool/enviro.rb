@@ -1,0 +1,6 @@
+require 'open-uri'
+require 'net/http'
+require 'pry'
+require 'json'
+require '/Users/rylandgrounds/Development/projects/Jikan_Api_Tool/lib/Jikan_Api_Tool/CLI.rb'
+require '/Users/rylandgrounds/Development/projects/Jikan_Api_Tool/lib/Jikan_Api_Tool/API.rb'
