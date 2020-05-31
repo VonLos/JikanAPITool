@@ -48,7 +48,6 @@ class Cli
         name = gets.strip.downcase
         puts "This is what we were able to find: "
         Api.new.edit_data(type, name)
-        binding.pry
         end
 
 
