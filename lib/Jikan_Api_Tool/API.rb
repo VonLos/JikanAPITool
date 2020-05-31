@@ -1,11 +1,5 @@
 
 class Api
-attr_accessor :type, :name
-    @@all = []
-    
-    
-    
-   
     def get_data(type, name)
         url = "http://api.jikan.moe/v3/search/#{type}?q=#{name}&limit=3"
             #get data from jikan api for editing
@@ -15,16 +9,24 @@ attr_accessor :type, :name
     end
     
     def edit_data(type, name)
-        filtered_result = []
+          filtered_result = []
+          mal_id = ''
+          title =  ''
+          rated = ''
+          synopsis = ''
         #edit it down to desired information and save it
           data = JSON.parse(self.get_data(type, name))
           results = data.fetch("results")
           results.each do|result| 
-          filtered_result << result.filter{|k,v| k == "mal_id" || k == "title" || k == "rated" || k == "synopsis"}
-        end
-        filtered_result.each {|fresult| fresult.each {|key, value| puts "#{key.capitalize}: #{value}"}}
-    end
+            mal_id = result["mal_id"] 
+            title = result["title"]
+            rated = result["rated"]
+            synopsis = result["synopsis"]
+            Media.new(mal_id,title,rated, synopsis)
+            binding.pry
+          end
 
+    end
 
     def self.all
     @@all
