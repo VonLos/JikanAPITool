@@ -1,8 +1,6 @@
 
 class Cli
-    attr_accessor :user, :type, :name
-
-        def starter
+    def starter
         menu
         end
 
@@ -40,6 +38,7 @@ class Cli
         type = 'manga'
         name = nil
         name = gets.strip.downcase
+        puts "This is what we were able to find: "
         Api.new.edit_data(type, name) 
         end
 
@@ -47,7 +46,9 @@ class Cli
         type = 'anime'
         name = nil
         name = gets.strip.downcase
+        puts "This is what we were able to find: "
         Api.new.edit_data(type, name)
+        binding.pry
         end
 
 
