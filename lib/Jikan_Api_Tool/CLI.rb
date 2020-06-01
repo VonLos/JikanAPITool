@@ -4,30 +4,32 @@ class Cli
         
         def start
         puts "Welcome, please enter an anime name to search for more info or type exit to end this session."
-        self.menu
+        menu
         end
 
         def menu
             input = gets.strip.downcase
-            if input == "exit"
-               puts "Thank you for using our service."
+            if input.length <= 3 
+                puts "Please use 3 characters or more."
+            elsif input == "exit"
+                closer
             else 
+                puts "This is what we were able to find:"
                 anime_pull(input)
+            end
         end
-    end
-
-
+        
         def anime_pull(input)
         Api.new.edit_data(input)
         Media.all.each {|result| puts result.title}
         puts "Pick one you would like to know more about or type exit."
         input = gets.strip.downcase
         if input == "exit"
-            puts "Thank you for using our service"
+            closer
         else
         title_out(input)
         end
-    end
+        end
 
         def title_out(input)
         out = Media.all.detect{|result| result.title.downcase == input}
