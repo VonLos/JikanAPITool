@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This gem allows you to search the My Anime List or MAL website for information regarding a given title.  After returning the given information the gem will exit, but you may run it again to continue.
 
 ## Development
 
