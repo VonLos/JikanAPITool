@@ -1,6 +1,7 @@
 class Media
 attr_accessor :mal_id, :title, :rated, :synopsis, :url, :score
 @@all = []
+
 def initialize(mal_id= nil, title = nil, rated = nil, synopsis =nil, url =nil, score = nil)
 @mal_id = mal_id
 @title = title
@@ -9,7 +10,6 @@ def initialize(mal_id= nil, title = nil, rated = nil, synopsis =nil, url =nil, s
 @url = url
 @score = score
 @@all << self
-
 end
 
 
@@ -25,4 +25,5 @@ puts "Synopsis: #{self.synopsis}\n"
 puts "URL: #{self.url}\n"
 puts "Score: #{self.score}\n\n\n"
 end
+
 end
