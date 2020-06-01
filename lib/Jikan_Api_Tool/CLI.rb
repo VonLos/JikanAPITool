@@ -11,6 +11,7 @@ class Cli
             input = gets.strip.downcase
             if input.length <= 3 
                 puts "Please use 3 characters or more."
+                menu
             elsif input == "exit"
                 closer
             else 
@@ -39,7 +40,13 @@ class Cli
         puts "Synopsis: #{out.synopsis}\n"
         puts "URL: #{out.url}\n"
         puts "Score: #{out.score}.score\n\n\n"
-        puts "Thank you! Please search again!"
+        puts "Would you like to continue or exit? Type yes to search again or any other key to exit."
+        input = gets.strip.downcase
+        if input == "yes" || input == "y"
+            self.start
+        else
+            closer
+        end
         end
      
      
