@@ -1,24 +1,20 @@
 
 class Cli
-    attr_accessor :input
-        def starter
-        menu
+    attr_accessor
+        
+        def start
+        puts "Welcome, please enter an anime name to search for more info or type exit to end this session."
+        self.menu
         end
 
         def menu
-            input = nil
-            puts "Welcome, please enter an anime name to search for more info or type exit to end this session."
             input = gets.strip.downcase
-            until input == "exit" && input.length >= 3
-            if input.length >= 3 && input != "exit"
+            if input == "exit"
+               puts "Thank you for using our service."
+            else 
                 anime_pull(input)
-            elsif input == "exit"
-                closer
-            else puts "Must have a minimum of 3 characters to search."
-                input = gets.strip.downcase
-            end
-            end
         end
+    end
 
 
         def anime_pull(input)
@@ -26,10 +22,22 @@ class Cli
         Media.all.each {|result| puts result.title}
         puts "Pick one you would like to know more about or type exit."
         input = gets.strip.downcase
+        if input == "exit"
+            puts "Thank you for using our service"
+        else
+        title_out(input)
         end
+    end
 
-        def title_out
-           puts  Media.all.detect {|result| result.title === input.downcase}
+        def title_out(input)
+        out = Media.all.detect{|result| result.title.downcase == input}
+        puts "Mal ID Number: #{out.mal_id}\n"
+        puts "Title: #{out.title}\n"
+        puts "Rated: #{out.rated}\n"
+        puts "Synopsis: #{out.synopsis}\n"
+        puts "URL: #{out.url}\n"
+        puts "Score: #{out.score}.score\n\n\n"
+        puts "Thank you! Please search again!"
         end
      
      

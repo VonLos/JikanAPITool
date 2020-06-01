@@ -17,13 +17,4 @@ def self.all
 @@all
 end
 
-def out
-puts "Mal ID Number: #{self.mal_id}\n"
-puts "Title: #{self.title}\n"
-puts "Rated: #{self.rated}\n"
-puts "Synopsis: #{self.synopsis}\n"
-puts "URL: #{self.url}\n"
-puts "Score: #{self.score}\n\n\n"
-end
-
 end
