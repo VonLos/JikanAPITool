@@ -1,38 +1,37 @@
 
 class Cli
-    attr_accessor
         
-        def start
+    def start
         puts "Welcome, please enter an anime name to search for more info or type exit to end this session."
         menu
-        end
+    end
 
-        def menu
-            input = gets.strip.downcase
-            if input.length <= 3 
-                puts "Please use 3 characters or more."
-                menu
-            elsif input == "exit"
-                closer
-            else 
-                puts "This is what we were able to find:"
-                anime_pull(input)
-            end
+    def menu
+        input = gets.strip.downcase
+        if input.length <= 3 
+            puts "Please use 3 characters or more."
+            menu
+        elsif input == "exit"
+            closer
+        else 
+            puts "This is what we were able to find:"
+            name = input
+            anime_pull(input)
         end
+    end
         
-        def anime_pull(input)
+    def anime_pull(input)
         Api.new.edit_data(input)
         Media.all.each {|result| puts result.title}
         puts "Pick one you would like to know more about or type exit."
         input = gets.strip.downcase
         if input == "exit"
-            closer
+        closer
         else
         title_out(input)
         end
-        end
-
-        def title_out(input)
+    end
+    def title_out(input)
         out = Media.all.detect{|result| result.title.downcase == input}
         puts "Mal ID Number: #{out.mal_id}\n"
         puts "Title: #{out.title}\n"
@@ -43,20 +42,20 @@ class Cli
         puts "Would you like to continue or exit? Type yes to search again or any other key to exit."
         input = gets.strip.downcase
         if input == "yes" || input == "y"
-            self.start
+        self.start
         else
-            closer
+        closer
         end
-        end
+    end
      
      
-        def   self.no_results
+    def   self.no_results
         puts "No results found please type the name again:"
-        menu
-        end
+        start
+    end
 
-        def closer
+    def closer
         puts "Thank you for using our service!"
-        end
+    end
 end
 
