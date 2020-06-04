@@ -10,17 +10,18 @@ class Api
     end
     
     def edit_data(name)
+        filtered_result = {}
         #edit it down to desired information and save it
         data = JSON.parse(self.get_data(name))
         results = data.fetch("results")
         results.each do|result| 
-        mal_id = result["mal_id"] 
-        title = result["title"]
-        rated = result["rated"]
-        synopsis = result["synopsis"]
-        url = result["url"]
-        score = result["score"]
-        Media.new(mal_id,title,rated, synopsis, url, score)
+        filtered_result[:mal_id] = result["mal_id"] 
+        filtered_result[:title] = result["title"]
+        filtered_result[:rated ]= result["rated"]
+        filtered_result[:synopsis] = result["synopsis"]
+        filtered_result[:url] = result["url"]
+        filtered_result[:score]= result["score"]
+         Media.new(filtered_result)
         end
     end
 
