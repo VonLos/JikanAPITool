@@ -25,10 +25,14 @@ class Cli
         Media.all.each {|result| puts result.title}
         puts "Pick one you would like to know more about or type exit."
         input = gets.strip.downcase
+        until  Media.all.detect {|result| result.title.downcase == input} || input == "exit"
+            puts "Sorry we couldn't find that entry! Please check your spelling and try again."
+            input = gets.strip.downcase
+        end
         if input == "exit"
-        closer
+            closer
         else
-        title_out(input)
+            title_out(input)
         end
     end
     def title_out(input)
@@ -42,9 +46,9 @@ class Cli
         puts "Would you like to continue or exit? Type yes to search again or any other key to exit."
         input = gets.strip.downcase
         if input == "yes" || input == "y"
-        self.start
+            self.start
         else
-        closer
+            closer
         end
     end
      
